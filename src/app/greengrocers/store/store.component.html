@@ -1,9 +1,42 @@
-<ul class="item-list store--item-list">
-  <li *ngFor="let item of items | async">
-    <div class="store--item-icon">
-      <img src="assets/icons/{{ item.id }}.svg" alt="{{ item.name }}" />
-    </div>
-    <div>£{{ item.price }}</div>
-    <button (click)="addToCart(item)">Add to cart</button>
-  </li>
-</ul>
+<select #filter (change)="onSelected()">
+  <option default>Pick a category</option>
+  <option>All</option>
+  <option>Vegetables</option>
+  <option>Fruits</option>
+</select>
+
+<div *ngIf="selectedFilter === 'All'">
+  <ul class="item-list store--item-list">
+    <li *ngFor="let item of items | async">
+      <div class="store--item-icon">
+        <img src="assets/icons/{{ item.id }}.svg" alt="{{ item.name }}" />
+      </div>
+      <div>£{{ item.price }}</div>
+      <button (click)="addToCart(item)">Add to cart</button>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="selectedFilter === 'Vegetables'">
+  <ul class="item-list store--item-list">
+    <li *ngFor="let item of vegetables | async">
+      <div class="store--item-icon">
+        <img src="assets/icons/{{ item.id }}.svg" alt="{{ item.name }}" />
+      </div>
+      <div>£{{ item.price }}</div>
+      <button (click)="addToCart(item)">Add to cart</button>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="selectedFilter === 'Fruits'">
+  <ul class="item-list store--item-list">
+    <li *ngFor="let item of fruits | async">
+      <div class="store--item-icon">
+        <img src="assets/icons/{{ item.id }}.svg" alt="{{ item.name }}" />
+      </div>
+      <div>£{{ item.price }}</div>
+      <button (click)="addToCart(item)">Add to cart</button>
+    </li>
+  </ul>
+</div>

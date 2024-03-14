@@ -17,6 +17,22 @@ export class GreengrocerService {
     );
   }
 
+  get vegetables(): Promise<Item[]> {
+    return firstValueFrom(
+      this.http.get<Item[]>(
+        `https://boolean-api-server.fly.dev/groceries?type=vegetable`
+      )
+    );
+  }
+
+  get fruits(): Promise<Item[]> {
+    return firstValueFrom(
+      this.http.get<Item[]>(
+        `https://boolean-api-server.fly.dev/groceries?type=fruit`
+      )
+    );
+  }
+
   async addItemToCart(item: Item) {
     // Description: Add the recieved item to itemList
     // Input: item: Item
