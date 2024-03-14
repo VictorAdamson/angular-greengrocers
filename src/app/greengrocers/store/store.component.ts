@@ -14,7 +14,7 @@ export class StoreComponent {
   vegetables: Promise<Item[]> = this.grocerService.vegetables;
 
   @ViewChild('filter') filter!: ElementRef;
-  selectedFilter = '';
+  selectedFilter = 'All';
   onSelected(): void {
     this.selectedFilter = this.filter.nativeElement.value;
   }

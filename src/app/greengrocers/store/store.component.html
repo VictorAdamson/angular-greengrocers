@@ -1,6 +1,5 @@
 <select #filter (change)="onSelected()">
-  <option default>Pick a category</option>
-  <option>All</option>
+  <option default>All</option>
   <option>Vegetables</option>
   <option>Fruits</option>
 </select>
@@ -16,7 +15,6 @@
     </li>
   </ul>
 </div>
-
 <div *ngIf="selectedFilter === 'Vegetables'">
   <ul class="item-list store--item-list">
     <li *ngFor="let item of vegetables | async">
